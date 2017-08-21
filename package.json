@@ -1,0 +1,31 @@
+{
+  "name": "image-sold-his-color",
+  "version": "1.0.0",
+  "description": "Grab the most color in a picture",
+  "main": "gulpfile.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "connect": "^3.6.3",
+    "connect-livereload": "^0.6.0",
+    "gulp": "^3.9.1",
+    "opn": "^5.1.0",
+    "serve-index": "^1.9.0",
+    "serve-static": "^1.12.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimmyyao88/image-sold-his-color.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimmyyao88/image-sold-his-color/issues"
+  },
+  "homepage": "https://github.com/jimmyyao88/image-sold-his-color#readme"
+}

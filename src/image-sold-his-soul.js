@@ -23,7 +23,7 @@ CanvasView.prototype.getPixelCount = function(){
 }
 
 CanvasView.prototype.getImageData = function(){
-  return this.getImageData(0,0,this.width,this.height)
+  return this.context.getImageData(0,0,this.width,this.height)
 }
 
 CanvasView.prototype.removeCanvas = function(){
@@ -41,33 +41,35 @@ ImageSoldHisSoul.prototype.getColor = function(sourceImage, quality){
   return dominantColor;
 }
 
-ImageSoldHisSoul.prototype.getPalette = function(source,colorCount,quality){
-    if(typeof colorCount === 'undefined' || colorCount<2 || colorCount>256){
-      colorCount = 10
-    }
-    if(typeof colorCount === 'undefined' || quality<1){
-      quality = 10
-    }
-    var image = CanvasView(source)
-    var imageData = image.getImageData()
-    var pixels = imageData.data
-    var pixelCount = image.getPixelCount()
+ImageSoldHisSoul.prototype.getPalette = function(sourceImage, colorCount, quality) {
 
-    var pixelArray = []
+    if (typeof colorCount === 'undefined' || colorCount < 2 || colorCount > 256) {
+        colorCount = 10;
+    }
+    if (typeof quality === 'undefined' || quality < 1) {
+        quality = 10;
+    }
 
+    var image      = new CanvasView(sourceImage);
+    var imageData  = image.getImageData();
+    var pixels     = imageData.data;
+    var pixelCount = image.getPixelCount();
+
+    // Store the RGB values in an array format suitable for quantize function
+    var pixelArray = [];
     for (var i = 0, offset, r, g, b, a; i < pixelCount; i = i + quality) {
-       offset = i * 4;
-       r = pixels[offset + 0];
-       g = pixels[offset + 1];
-       b = pixels[offset + 2];
-       a = pixels[offset + 3];
-       // If pixel is mostly opaque and not white
-       if (a >= 125) {
-           if (!(r > 250 && g > 250 && b > 250)) {
-               pixelArray.push([r, g, b]);
-           }
-       }
-   }
+        offset = i * 4;
+        r = pixels[offset + 0];
+        g = pixels[offset + 1];
+        b = pixels[offset + 2];
+        a = pixels[offset + 3];
+        // If pixel is mostly opaque and not white
+        if (a >= 125) {
+            if (!(r > 250 && g > 250 && b > 250)) {
+                pixelArray.push([r, g, b]);
+            }
+        }
+    }
 
     // Send array to quantize function which clusters values
     // using median cut algorithm
@@ -78,8 +80,7 @@ ImageSoldHisSoul.prototype.getPalette = function(source,colorCount,quality){
     image.removeCanvas();
 
     return palette;
-}
-
+};
 ImageSoldHisSoul.prototype.getColorFromUrl = function(imageUrl , callback,quality){
     sourceImage = document.createElement('img');
     var self = this;

@@ -1,0 +1,47 @@
+
+<html>
+  <head>
+    <script src="../image-sold-his-soul.js"></script>
+    <style>
+    .dominantColor {
+      width: 300px;
+      height: 300px;
+    }
+
+    </style>
+  </head>
+<body>
+  <div>
+    <img src="images/image-3.jpg" id="sample1"/>
+    <div class="dominantColor">
+    </div>
+    <div class="paletteColors">
+    </div>
+  </div>
+</body>
+<script>
+window.onload = function(){
+  var imgSource = document.getElementById('sample1')
+  var imageSoldHisSoul = new ImageSoldHisSoul()
+  var dominantColor = imageSoldHisSoul.getColor(imgSource)
+  var paletteColors = imageSoldHisSoul.getPalette(imgSource,3)
+  var dominantColorTag = document.querySelector('.dominantColor')
+  var paletteColorTag = document.querySelector('.paletteColors')
+  dominantColorTag.style.backgroundColor=colorReturn(dominantColor)
+  for(var i=0;i<paletteColors.length;i++){
+    console.log('colorReturn(paletteColors[i])',colorReturn(paletteColors[i]))
+    var div = document.createElement('div')
+    div.style.backgroundColor=colorReturn(paletteColors[i])
+    div.style.width = '200px'
+    div.style.height = '200px'
+    paletteColorTag.appendChild(div)
+  }
+}
+
+
+function colorReturn(rgbArr){
+  return 'rgb('+rgbArr[0]+','+rgbArr[1]+','+rgbArr[2]+')'
+}
+</script>
+
+</html>
