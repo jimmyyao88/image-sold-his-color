@@ -1,7 +1,7 @@
 
 <html>
   <head>
-    <script src="../image-sold-his-soul.js"></script>
+    <script src="../image-sold-his-color.js"></script>
     <style>
     .dominantColor {
       width: 300px;
@@ -22,9 +22,9 @@
 <script>
 window.onload = function(){
   var imgSource = document.getElementById('sample1')
-  var imageSoldHisSoul = new ImageSoldHisSoul()
-  var dominantColor = imageSoldHisSoul.getColor(imgSource)
-  var paletteColors = imageSoldHisSoul.getPalette(imgSource,3)
+  var imageSoldHisColor = new ImageSoldHisColor()
+  var dominantColor = imageSoldHisColor.getColor(imgSource)
+  var paletteColors = imageSoldHisColor.getPalette(imgSource,3)
   var dominantColorTag = document.querySelector('.dominantColor')
   var paletteColorTag = document.querySelector('.paletteColors')
   dominantColorTag.style.backgroundColor=colorReturn(dominantColor)

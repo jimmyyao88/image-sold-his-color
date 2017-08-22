@@ -31,17 +31,17 @@ CanvasView.prototype.removeCanvas = function(){
 }
 
 
-function ImageSoldHisSoul (){
+function ImageSoldHisColor (){
 
 }
 
-ImageSoldHisSoul.prototype.getColor = function(sourceImage, quality){
+ImageSoldHisColor.prototype.getColor = function(sourceImage, quality){
   var palette       = this.getPalette(sourceImage, 5, quality);
   var dominantColor = palette[0];
   return dominantColor;
 }
 
-ImageSoldHisSoul.prototype.getPalette = function(sourceImage, colorCount, quality) {
+ImageSoldHisColor.prototype.getPalette = function(sourceImage, colorCount, quality) {
 
     if (typeof colorCount === 'undefined' || colorCount < 2 || colorCount > 256) {
         colorCount = 10;
@@ -81,7 +81,7 @@ ImageSoldHisSoul.prototype.getPalette = function(sourceImage, colorCount, qualit
 
     return palette;
 };
-ImageSoldHisSoul.prototype.getColorFromUrl = function(imageUrl , callback,quality){
+ImageSoldHisColor.prototype.getColorFromUrl = function(imageUrl , callback,quality){
     sourceImage = document.createElement('img');
     var self = this;
     sourceImage.addEventListener('load',function(){
@@ -92,7 +92,7 @@ ImageSoldHisSoul.prototype.getColorFromUrl = function(imageUrl , callback,qualit
     sourceImage.src = imageUrl
 }
 
-ImageSoldHisSoul.prototype.getImageData = function(imageUrl, callback) {
+ImageSoldHisColor.prototype.getImageData = function(imageUrl, callback) {
     xhr = new XMLHttpRequest();
     xhr.open('GET', imageUrl, true);
     xhr.responseType = 'arraybuffer'
@@ -112,7 +112,7 @@ ImageSoldHisSoul.prototype.getImageData = function(imageUrl, callback) {
     xhr.send();
 };
 
-ImageSoldHisSoul.prototype.getColorAsync = function(imageUrl, callback, quality) {
+ImageSoldHisColor.prototype.getColorAsync = function(imageUrl, callback, quality) {
     var self = this;
     this.getImageData(imageUrl, function(imageData){
         sourceImage = document.createElement("img");
